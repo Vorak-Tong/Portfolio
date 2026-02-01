@@ -31,7 +31,7 @@ const Education = () => {
                             <div className="flex-1">
                                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-2">
                                     <h3 className="text-xl font-bold text-white">
-                                        Bachelor of Science in Computer Science
+                                        Bachelor of Computer Science
                                     </h3>
                                     <span className="inline-block px-3 py-1 text-sm font-medium text-sky-400 bg-sky-500/10 rounded-full">
                                         2023 - Present
