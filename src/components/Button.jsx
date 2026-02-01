@@ -5,6 +5,7 @@ const Button = ({
     onClick,
     className = '',
     ariaLabel,
+    disabled = false,
     ...props
 }) => {
     const baseStyles = 'px-6 py-3 rounded-2xl font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-slate-900';
@@ -15,7 +16,8 @@ const Button = ({
         ghost: 'text-slate-300 hover:text-sky-400 hover:bg-slate-800'
     };
 
-    const combinedClassName = `${baseStyles} ${variants[variant]} ${className}`;
+    const disabledStyles = disabled ? 'opacity-50 cursor-not-allowed hover:scale-100' : '';
+    const combinedClassName = `${baseStyles} ${variants[variant]} ${disabledStyles} ${className}`;
 
     const handleClick = (e) => {
         if (href && href.startsWith('#')) {
@@ -58,6 +60,7 @@ const Button = ({
             onClick={onClick}
             className={combinedClassName}
             aria-label={ariaLabel}
+            disabled={disabled}
             {...props}
         >
             {children}
