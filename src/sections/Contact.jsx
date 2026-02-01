@@ -22,29 +22,32 @@ const Contact = () => {
         setStatus('loading');
 
         try {
-            const response = await fetch('https://formspree.io/f/xovqbpwk', {
+            const formDataToSend = new FormData();
+            formDataToSend.append('access_key', 'cca8dad4-0242-498a-8695-3958a7fec704');
+            formDataToSend.append('name', formData.name);
+            formDataToSend.append('email', formData.email);
+            formDataToSend.append('message', formData.message);
+            formDataToSend.append('subject', `New Portfolio Contact from ${formData.name}`);
+            formDataToSend.append('from_name', 'Portfolio Contact Form');
+
+            const response = await fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: formData.name,
-                    email: formData.email,
-                    message: formData.message,
-                    _subject: `New Portfolio Contact from ${formData.name}`
-                })
+                body: formDataToSend
             });
 
-            if (response.ok) {
+            const data = await response.json();
+
+            if (data.success) {
                 setStatus('success');
                 setFormData({ name: '', email: '', message: '' });
-                // Reset success message after 5 seconds
                 setTimeout(() => setStatus('idle'), 5000);
             } else {
+                console.error('Form submission error:', data);
                 setStatus('error');
                 setTimeout(() => setStatus('idle'), 5000);
             }
         } catch (error) {
+            console.error('Network error:', error);
             setStatus('error');
             setTimeout(() => setStatus('idle'), 5000);
         }
