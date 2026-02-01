@@ -25,7 +25,7 @@ const Footer = () => {
                         </a>
 
                         <a
-                            href="#"
+                            href="https://www.linkedin.com/in/vorak-tong-ab8a9735a"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-slate-400 hover:text-sky-400 transition-colors"
@@ -37,7 +37,7 @@ const Footer = () => {
                         </a>
 
                         <a
-                            href="mailto:tongvirak@example.com"
+                            href="mailto:viraktong197@gmail.com"
                             className="text-slate-400 hover:text-sky-400 transition-colors"
                             aria-label="Email"
                         >
